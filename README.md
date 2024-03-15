@@ -36,6 +36,10 @@ For Data Cleaning, we
 `outages_cleaned.groupby(['CLIMATE.REGION','CAUSE.CATEGORY','CLIMATE.CATEGORY']).agg('mean').dropna(how=all)`
 3. **Replacing invalid data**: We replaced negative or zero values in the `'OUTAGE.DURATION'` column to NaN (not a number) as they aren't valid durations for this dataset. 
 
+### Plots:
+#### Univariate
+
+
 ## Assessment of Missingness:
 
 ## Hypothesis Testing:
