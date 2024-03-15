@@ -48,15 +48,15 @@ It's hard to understand how this distribution is laid out, so let's also create 
 ##### Log Univariate
 <iframe
   src="assets/fig_log_univariate.html"
-  width="800"
-  height="600"
+  width="600"
+  height="500"
   frameborder="0"
 ></iframe>
 
 <iframe
   src="assets/fig_bivariate.html"
-  width="800"
-  height="600"
+  width="600"
+  height="500"
   frameborder="0"
 ></iframe>
 
