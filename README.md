@@ -44,7 +44,7 @@ Test Statistic: Median outage duration
 ## Prediction Problem:
 
 Predict the duration of major power outages based on various factors such as cause category, climate region, and the number of customers affected. It is a **regression** problem.
-We want to predict the OUTAGE.DURATION column in our dataset
+We want to predict the **OUTAGE.DURATION** column in our dataset
 
 ## Baseline Model:
 
