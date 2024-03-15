@@ -1,6 +1,4 @@
-# PowerOutageAnalysis
-This is a project for DSC 80 at UCSD
-
 ## Contributors:
-1. Madhav Baghla
-2. Nadine Marcus
+1. [Madhav Baghla](https://github.com/MadhavBaghla2004)
+2. [Nadine Marcus](https://github.com/nadinemarcus)
+
