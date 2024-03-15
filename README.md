@@ -34,7 +34,17 @@ Number of Columns: 4
 
 ## Hypothesis Testing:
 
+Null Hypothesis: The median outage duration is the same for major power outages caused by different factors, occurring across various climate regions, affecting different numbers of customers.
+
+Alternative Hypothesis: The median outage duration differs for major power outages caused by different factors, occurring across various climate regions, affecting different numbers of customers. 
+
+Test Statistic: Median outage duration
+
+
 ## Prediction Problem:
+
+Predict the duration of major power outages based on various factors such as cause category, climate region, and the number of customers affected. It is a **regression** problem.
+We want to predict the OUTAGE.DURATION column in our dataset
 
 ## Baseline Model:
 
