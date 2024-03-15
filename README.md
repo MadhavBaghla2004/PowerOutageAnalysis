@@ -18,7 +18,7 @@ Imagine a world with no light! <br>
 Where did we get the data from? <br>
 Our [dataset](https://engineering.purdue.edu/LASCI/research-data/outages) includes the major outages witnessed by different states in the continental U.S. Besides major outages, this data contains information on geographical location of the outages, regional climatic information, land-use characteristics, electricity consumption patterns and economic characteristics of the states affected by the outages. 
 
-Number of Rows: 1541
+Number of Rows: 1541 <br>
 Number of Columns: 4
 
 | SNo | Column Name | Description |
