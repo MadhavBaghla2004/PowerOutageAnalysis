@@ -38,7 +38,27 @@ For Data Cleaning, we
 
 ### Plots:
 #### Univariate
+<iframe
+  src="assets/fig_univariate.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+It's hard to understand how this distribution is laid out, so let's also create a log univariate graph to get a better understanding of how the data is distributed.
+##### Log Univariate
+<iframe
+  src="assets/fig_log_univariate.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
+<iframe
+  src="assets/fig_bivariate.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ## Assessment of Missingness:
 
