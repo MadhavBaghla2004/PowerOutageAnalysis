@@ -30,12 +30,19 @@ Number of Columns: 4
 
 ## Data Cleaning and Exploratory Data Analysis:
 For Data Cleaning, we 
-1. **Column Selection**: We extracted the columns that pertained to our analysis: `'CAUSE.CATEGORY'`, `'OUTAGE.DURATION'`, `'CLIMATE.REGION'`, `'CLIMATE.CATEGORY'`, and `'CUSTOMERS.AFFECTED'`
+1. **Column Selection**: We extracted the columns that pertained to our analysis: `'CAUSE.CATEGORY'`, `'OUTAGE.DURATION'`, `'CLIMATE.REGION'`, `'CLIMATE.CATEGORY'`, `'YEAR'`, and `'CUSTOMERS.AFFECTED'`
 2. **Cleaning Missing Values**: We dropped rows with all missing values so only meaningful data is used for our analysis and that there are no empty rows.
    - For further cleaning, I organized the DataFrame so that they were grouped by each individual categorical variable and dropped rows without any data for those subcategories using <br>
 ```outages_cleaned.groupby(['CLIMATE.REGION','CAUSE.CATEGORY','CLIMATE.CATEGORY']).agg('mean').dropna(how=all)```
 3. **Replacing invalid data**: We replaced negative or zero values in the `'OUTAGE.DURATION'` column to NaN (not a number) as they aren't valid durations for this dataset. 
 
+| CAUSE.CATEGORY     |   OUTAGE.DURATION | CLIMATE.REGION     | CLIMATE.CATEGORY   |   CUSTOMERS.AFFECTED |   YEAR |
+|:-------------------|------------------:|:-------------------|:-------------------|---------------------:|-------:|
+| severe weather     |              3060 | East North Central | normal             |                70000 |   2011 |
+| intentional attack |                 1 | East North Central | normal             |                  nan |   2014 |
+| severe weather     |              3000 | East North Central | cold               |                70000 |   2010 |
+| severe weather     |              2550 | East North Central | normal             |                68200 |   2012 |
+| severe weather     |              1740 | East North Central | warm               |               250000 |   2015 |
 ### Plots:
 #### Univariate
 <iframe
@@ -62,6 +69,15 @@ It's hard to understand how this distribution is laid out, so let's also create 
   height="500"
   frameborder="0"
 ></iframe>
+
+#### Interesting Aggregates Pivot Table
+|                                     |   (0.0, 1000.0] |   (1000.0, 10000.0] |   (10000.0, 100000.0] |   (100000.0, 1000000.0] |   (1000000.0, inf] |
+|:------------------------------------|----------------:|--------------------:|----------------------:|------------------------:|-------------------:|
+| ('equipment failure', 'cold')       |             200 |                 nan |                 376   |                   182   |                nan |
+| ('equipment failure', 'normal')     |             125 |                 nan |                 161.5 |                   752.5 |                nan |
+| ('equipment failure', 'warm')       |             909 |                 nan |                 221   |                    64   |                nan |
+| ('fuel supply emergency', 'normal') |            2891 |                 nan |                 nan   |                   nan   |                nan |
+| ('intentional attack', 'cold')      |             nan |                  60 |                 nan   |                   nan   |                nan |
 
 ## Assessment of Missingness:
 
