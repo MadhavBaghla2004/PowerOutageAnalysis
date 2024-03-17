@@ -71,7 +71,7 @@ It's hard to understand how this distribution is laid out, so let's also create 
 ></iframe>
 
 #### Interesting Aggregates Pivot Table
-|                                     |   (0.0, 1000.0] |   (1000.0, 10000.0] |   (10000.0, 100000.0] |   (100000.0, 1000000.0] |   (1000000.0, inf] |
+|   CAUSE.CATEGORY, CLIMATE.CATEGORY    |   (0.0, 1000.0] |   (1000.0, 10000.0] |   (10000.0, 100000.0] |   (100000.0, 1000000.0] |   (1000000.0, inf] |
 |:------------------------------------|----------------:|--------------------:|----------------------:|------------------------:|-------------------:|
 | ('equipment failure', 'cold')       |             200 |                 nan |                 376   |                   182   |                nan |
 | ('equipment failure', 'normal')     |             125 |                 nan |                 161.5 |                   752.5 |                nan |
