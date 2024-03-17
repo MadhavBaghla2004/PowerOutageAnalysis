@@ -71,7 +71,11 @@ It's hard to understand how this distribution is laid out, so let's also create 
 ></iframe>
 
 #### Interesting Aggregates Pivot Table
-|   CAUSE.CATEGORY, CLIMATE.CATEGORY    |   (0.0, 1000.0] |   (1000.0, 10000.0] |   (10000.0, 100000.0] |   (100000.0, 1000000.0] |   (1000000.0, inf] |
+The pivot table offers a clearer perspective on the median outage duration by examining the interplay between the cause of the outage, `'CAUSE.CATEGORY'`, the climate conditions, `'CLIMATE.CATEGORY'`, and the scale of customers affected, `'CUSTOMERS.AFFECTED'`. 
+
+The multivariate analysis underscores the variability in outage durations depending on these factors, with certain patterns emerging, such as severe weather outages tending to last longer as the number of affected customers rises, particularly in cold climates. It also highlights that large-scale outages, especially those affecting over a million customers, result in extended durations. In contrast, smaller-scale outages, like those due to intentional attacks or islanding, generally have shorter durations, suggesting that they are often localized and potentially easier to resolve. 
+
+|   CAUSE.CATEGORY, CLIMATE.CATEGORY    |   < 1000 |   1,000 - 10,000 |   10,000 - 100,000 |   100,000 - 1,000,000 |   > 1,000,000 |
 |:------------------------------------|----------------:|--------------------:|----------------------:|------------------------:|-------------------:|
 | ('equipment failure', 'cold')       |             200 |                 nan |                 376   |                   182   |                nan |
 | ('equipment failure', 'normal')     |             125 |                 nan |                 161.5 |                   752.5 |                nan |
