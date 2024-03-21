@@ -29,7 +29,7 @@ Number of Columns: 4
 | 4 | CUSTOMERS.AFFECTED | Number of customers affected by the power outage event |
 
 ## Data Cleaning and Exploratory Data Analysis:
-For Data Cleaning, we 
+For Data Cleaning, 
 1. **Column Selection**: We extracted the columns that pertained to our analysis: `'CAUSE.CATEGORY'`, `'OUTAGE.DURATION'`, `'CLIMATE.REGION'`, `'CLIMATE.CATEGORY'`, `'YEAR'`, and `'CUSTOMERS.AFFECTED'`
 2. **Cleaning Missing Values**: We dropped rows with all missing values so only meaningful data is used for our analysis and that there are no empty rows.
    - For further cleaning, I organized the DataFrame so that they were grouped by each individual categorical variable and dropped rows without any data for those subcategories using <br>
@@ -117,18 +117,21 @@ This indicates that the `'OUTAGES.DURATION'` column could likely be **MAR** with
 **Alternative Hypothesis**: The median outage varies depending on the cause of the outage, the climate region where it occurs, and the number of customers affected. Specific factors such as severe weather, regions like the Northwest and Southeast, and the number of customers affected play a significant role in these variations.
 
 **Test Statistic**: Median outage duration
+
 <iframe
   src="assets/fig_duration_over_time.html"
   width="600"
   height="500"
   frameborder="0"
 ></iframe>
+
 <iframe
   src="assets/fig_cause_vs_duration.html"
   width="600"
   height="500"
   frameborder="0"
 ></iframe>
+
 <iframe
   src="assets/fig_climate_region_vs_duration.html"
   width="600"
@@ -139,6 +142,7 @@ This indicates that the `'OUTAGES.DURATION'` column could likely be **MAR** with
 The computed permutation test to test these hypothesis arrived at these results:
 
 **Observed Statistic**: 85.42412896956769
+
 **P-value**: 0.085
 
 The observed statistic represents the aggregate deviation of median outage durations within each category combination from `'CAUSE.CATEGORY'`, `'CLIMATE.CATEGORY'`, and `'CUSTOMER.BIN'`, from the overall median outage duration across the entire dataset.
