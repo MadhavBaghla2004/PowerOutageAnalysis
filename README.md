@@ -85,6 +85,24 @@ The multivariate analysis underscores the variability in outage durations depend
 
 ## Assessment of Missingness:
 
+The `'OUTAGES.DURATION'` column could likely be **NMAR** given that missingness could be due to 'invalid' or negligently brief outage duration times. We can contrast this missingness with the values of the `'CUSTOMERS.AFFECTED'` column to see if there are any consistencies or trends that can determine how big these outages are or if they could be described as negligent or not enough data.
+
+When conducting a permutation test to assess the missingness association between the `'OUTAGE.DURATION'` and the `'CUSTOMERS.AFFECTED'` in the form of shuffled a new column: `'CUSTOMER.BINS'`, a column created to organize it into different `bins` of `[0, 1000, 10000, 100000, 1000000, np.inf]`. 
+
+`Observed Statistic: 32044.474390936633
+P-value: 0.01`
+
+Based off of the code, the observed statistic indicates that the standard deviation between the missing outage durations and the number of customers affected is approximately 32,044, and the p-value is 0.01, indicating that there is a 1% chance of observing a standard deviation as extreme as this by chance if the null hypothesis were true.
+
+This indicates that the `'OUTAGES.DURATION'` column could likely be **MAR** with the `'CUSTOMERS.AFFECTED'` column.
+
+<iframe
+  src="assets/fig_cust_vs_duration_missing.html"
+  width="600"
+  height="500"
+  frameborder="0"
+></iframe>
+
 ## Hypothesis Testing:
 
 Null Hypothesis: The median outage duration is the same for major power outages caused by different factors, occurring across various climate regions, affecting different numbers of customers.
