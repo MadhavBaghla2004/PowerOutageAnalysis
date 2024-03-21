@@ -102,23 +102,79 @@ This indicates that the `'OUTAGES.DURATION'` column could likely be **MAR** with
   height="500"
   frameborder="0"
 ></iframe>
+<iframe
+  src="assets/fig_empirical_dist_missingness.html"
+  width="600"
+  height="500"
+  frameborder="0"
+></iframe>
+
 
 ## Hypothesis Testing:
 
-Null Hypothesis: The median outage duration is the same for major power outages caused by different factors, occurring across various climate regions, affecting different numbers of customers.
+**Null Hypothesis**: The median outage duration is independent of the cause of the outage, the climate region where it occurs, and the number of customers affected.
 
-Alternative Hypothesis: The median outage duration differs for major power outages caused by different factors, occurring across various climate regions, affecting different numbers of customers. 
+**Alternative Hypothesis**: The median outage varies depending on the cause of the outage, the climate region where it occurs, and the number of customers affected. Specific factors such as severe weather, regions like the Northwest and Southeast, and the number of customers affected play a significant role in these variations.
 
-Test Statistic: Median outage duration
+**Test Statistic**: Median outage duration
+<iframe
+  src="assets/fig_duration_over_time.html"
+  width="600"
+  height="500"
+  frameborder="0"
+></iframe>
+<iframe
+  src="assets/fig_cause_vs_duration.html"
+  width="600"
+  height="500"
+  frameborder="0"
+></iframe>
+<iframe
+  src="assets/fig_climate_region_vs_duration.html"
+  width="600"
+  height="500"
+  frameborder="0"
+></iframe>
 
+The computed permutation test to test these hypothesis arrived at these results:
+
+**Observed Statistic**: 85.42412896956769
+**P-value**: 0.085
+
+The observed statistic represents the aggregate deviation of median outage durations within each category combination from `'CAUSE.CATEGORY'`, `'CLIMATE.CATEGORY'`, and `'CUSTOMER.BIN'`, from the overall median outage duration across the entire dataset.
+
+Given that we have chosen a significance level of 0.05, this p-value indicates that *we fail to reject the null hypothesis*. Under the null hypothesis of there being no difference in median outage durations across different categories, there is an 8.5% chance of observing an aggregate deviation as extreme as the one observed in the data due to random chance.
 
 ## Prediction Problem:
+The model is to predict the duration of major power outages based on the cause of the outage, the climate region where it occurs, and the number of customers affected. This is a regression problem, as we are predicting a continuous outcome (outage duration in minutes).
 
-Predict the duration of major power outages based on various factors such as cause category, climate region, and the number of customers affected. It is a **regression** problem.
-We want to predict the **OUTAGE.DURATION** column in our dataset
+#### Response Variable
+**Response Variable**: `'OUTAGE.DURATION'`
+Understanding the duration of power outages can help utility companies in planning and resource allocation to mitigate the effects of outages. Predicting outage duration can also aid in effectively communicating with customers regarding outage resolutions.
+#### Evaluation Metric
+**Chosen Metric**: Root Mean Squared Error (RMSE)
+RMSE is a suitable metric for regression problems as it measures the average magnitude of the error between predicted and actual values, providing an estimate of how far predictions are from the actual outage durations. It penalizes larger errors more than Mean Absolute Error (MAE), making it more sensitive to outliers, which is valuable in a context where large deviations from actual durations are more impactful. Additionally, RMSE is in the same unit as the target variable, making it intuitively easier to interpret.
+
+#### Model and Features
+**Model**: Linear Regression
+**Features**: `'CAUSE.CATEGORY'`, `'CLIMATE.REGION'`, `'CUSTOMERS.AFFECTED'`
+These features are chosen based on the assumption that the cause of the outage and the climate region could influence the duration due to varying severity and response strategies. The number of customers affected is also a proxy for the outage's scale, which could impact duration.
+
+#### Data Preprocessing
+**Numerical Features**: `'CUSTOMERS.AFFECTED'` is standardized and missing values are imputed with the median, as it is less sensitive to outliers than the mean.
+**Categorical Features**: `'CAUSE.CATEGORY'` and `'CLIMATE.REGION'` are one-hot encoded to transform them into a format suitable for linear regression. Missing values are imputed with the most frequent category within each feature, assuming that the most common occurrences are likely to represent typical cases.
+
 
 ## Baseline Model:
 
+#### Results:
+After training the baseline model and evaluating it on the test set, we obtained an RMSE value that quantifies the average error in the same units as the target variable, providing a clear measure of prediction accuracy. The lower the RMSE, the more accurate the model is in predicting outage durations.
+
+#### Interpretation and Next Steps:
+A high RMSE value suggests that the model's predictions are significantly off from the actual durations, indicating a need for model improvement or consideration of additional features that might better capture the variance in outage durations.
+To enhance prediction accuracy, we could explore more complex models such as random forests or gradient boosting, which might capture non-linear relationships and interactions between features better than linear regression.
+Further feature engineering, such as creating interaction terms or incorporating additional relevant data like weather conditions or infrastructure age, could also improve model performance.
+This baseline model serves as a starting point for developing more sophisticated predictive models, with the ultimate goal of aiding utility companies in outage management and improving customer communication during outages.
 ## Final Model:
 
 ## Fairness Analysis:
