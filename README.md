@@ -89,8 +89,9 @@ The `'OUTAGES.DURATION'` column could likely be **NMAR** given that missingness 
 
 When conducting a permutation test to assess the missingness association between the `'OUTAGE.DURATION'` and the `'CUSTOMERS.AFFECTED'` in the form of shuffled a new column: `'CUSTOMER.BINS'`, a column created to organize it into different `bins` of `[0, 1000, 10000, 100000, 1000000, np.inf]`. 
 
-`Observed Statistic: 32044.474390936633
-P-value: 0.01`
+**Observed Statistic**: 32044.474390936633
+
+**P-value**: 0.01
 
 Based off of the code, the observed statistic indicates that the standard deviation between the missing outage durations and the number of customers affected is approximately 32,044, and the p-value is 0.01, indicating that there is a 1% chance of observing a standard deviation as extreme as this by chance if the null hypothesis were true.
 
@@ -102,6 +103,7 @@ This indicates that the `'OUTAGES.DURATION'` column could likely be **MAR** with
   height="500"
   frameborder="0"
 ></iframe>
+
 <iframe
   src="assets/fig_empirical_dist_missingness.html"
   width="600"
@@ -155,17 +157,20 @@ The model is to predict the duration of major power outages based on the cause o
 #### Response Variable
 **Response Variable**: `'OUTAGE.DURATION'`
 Understanding the duration of power outages can help utility companies in planning and resource allocation to mitigate the effects of outages. Predicting outage duration can also aid in effectively communicating with customers regarding outage resolutions.
+
 #### Evaluation Metric
 **Chosen Metric**: Root Mean Squared Error (RMSE)
 RMSE is a suitable metric for regression problems as it measures the average magnitude of the error between predicted and actual values, providing an estimate of how far predictions are from the actual outage durations. It penalizes larger errors more than Mean Absolute Error (MAE), making it more sensitive to outliers, which is valuable in a context where large deviations from actual durations are more impactful. Additionally, RMSE is in the same unit as the target variable, making it intuitively easier to interpret.
 
 #### Model and Features
 **Model**: Linear Regression
+
 **Features**: `'CAUSE.CATEGORY'`, `'CLIMATE.REGION'`, `'CUSTOMERS.AFFECTED'`
 These features are chosen based on the assumption that the cause of the outage and the climate region could influence the duration due to varying severity and response strategies. The number of customers affected is also a proxy for the outage's scale, which could impact duration.
 
 #### Data Preprocessing
 **Numerical Features**: `'CUSTOMERS.AFFECTED'` is standardized and missing values are imputed with the median, as it is less sensitive to outliers than the mean.
+
 **Categorical Features**: `'CAUSE.CATEGORY'` and `'CLIMATE.REGION'` are one-hot encoded to transform them into a format suitable for linear regression. Missing values are imputed with the most frequent category within each feature, assuming that the most common occurrences are likely to represent typical cases.
 
 
