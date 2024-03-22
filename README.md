@@ -2,6 +2,8 @@
 1. [Madhav Baghla](https://github.com/MadhavBaghla2004)
 2. [Nadine Marcus](https://github.com/nadinemarcus)
 
+<img src="https://i.insider.com/602c4bcd5847630018323626?width=1200&format=jpeg"> 
+
 ## Introduction:
 
 What question are we trying to answer? <br>
@@ -38,8 +40,8 @@ For Data Cleaning,
 4. **Replacing invalid data**: We replaced negative or zero values in the `'OUTAGE.DURATION'` column to NaN (not a number) as they aren't valid durations for this dataset. For categorical columns, I replaced missing values or invalid values with 'NaN' so the data would be unbiased.
    
 
-| CAUSE.CATEGORY     |   OUTAGE.DURATION | CLIMATE.REGION     | CLIMATE.CATEGORY   |   CUSTOMERS.AFFECTED |   YEAR |
-|:-------------------|------------------:|:-------------------|:-------------------|---------------------:|-------:|
+| CAUSE.CATEGORY     |   OUTAGE.DURATION | CLIMATE.REGION  | CLIMATE.CATEGORY  |  CUSTOMERS.AFFECTED |  YEAR |
+|:-------------------|------------------:|:-------------------|:-------------|---------------------:|-------:|
 | severe weather     |              3060 | East North Central | normal             |                70000 |   2011 |
 | intentional attack |                 1 | East North Central | normal             |                  nan |   2014 |
 | severe weather     |              3000 | East North Central | cold               |                70000 |   2010 |
