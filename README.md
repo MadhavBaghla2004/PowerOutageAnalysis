@@ -40,60 +40,13 @@ For Data Cleaning,
 4. **Replacing invalid data**: We replaced negative or zero values in the `'OUTAGE.DURATION'` column to NaN (not a number) as they aren't valid durations for this dataset. For categorical columns, I replaced missing values or invalid values with 'NaN' so the data would be unbiased.
    
 
-<table>
-  <thead>
-    <tr>
-      <th>CAUSE.CATEGORY</th>
-      <th>OUTAGE.DURATION</th>
-      <th>CLIMATE.REGION</th>
-      <th>CLIMATE.CATEGORY</th>
-      <th>CUSTOMERS.AFFECTED</th>
-      <th>YEAR</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>severe weather</td>
-      <td>3060</td>
-      <td>East North Central</td>
-      <td>normal</td>
-      <td>70000</td>
-      <td>2011</td>
-    </tr>
-    <tr>
-      <td>intentional attack</td>
-      <td>1</td>
-      <td>East North Central</td>
-      <td>normal</td>
-      <td>NaN</td>
-      <td>2014</td>
-    </tr>
-    <tr>
-      <td>severe weather</td>
-      <td>3000</td>
-      <td>East North Central</td>
-      <td>cold</td>
-      <td>70000</td>
-      <td>2010</td>
-    </tr>
-    <tr>
-      <td>severe weather</td>
-      <td>2550</td>
-      <td>East North Central</td>
-      <td>normal</td>
-      <td>68200</td>
-      <td>2012</td>
-    </tr>
-    <tr>
-      <td>severe weather</td>
-      <td>1740</td>
-      <td>East North Central</td>
-      <td>warm</td>
-      <td>250000</td>
-      <td>2015</td>
-    </tr>
-  </tbody>
-</table>
+|CAUSE.CATEGORY   |OUTAGE.DURATION |CLIMATE.REGION      |CLIMATE.CATEGORY |CUSTOMERS.AFFECTED |YEAR |
+|:------------|-------------|-------------|-------------|-------------|-----|
+| severe weather   |            3060 | East North Central  | normal           |              70000 | 2011 |
+| intentional attack |              1 | East North Central | normal           |                nan | 2014 |
+| severe weather   |            3000 | East North Central  | cold             |              70000 | 2010 |
+| severe weather   |            2550 | East North Central  | normal           |              68200 | 2012 |
+| severe weather   |            1740 | East North Central  | warm             |             250000 | 2015 |
 
 
 
