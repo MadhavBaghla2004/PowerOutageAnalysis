@@ -41,20 +41,20 @@ For Data Cleaning,
    
 <style>
     table {
-        width: 50%;
+        width: 40%;
     }
 
     th, td {
-        padding: 8px;
+        padding: 4px;
         text-align: left;
     }
 
     .narrow {
-        width: 10%;
+        width: 5%;
     }
 
     .wide {
-        width: 20%;
+        width: 15%;
     }
 </style>
 
