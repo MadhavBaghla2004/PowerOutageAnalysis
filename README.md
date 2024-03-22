@@ -41,7 +41,7 @@ For Data Cleaning,
    
 
 | CAUSE.CATEGORY     |   OUTAGE.DURATION | CLIMATE.REGION  | CLIMATE.CATEGORY  |  CUSTOMERS.AFFECTED |  YEAR |
-|:-------------------|------------------:|:-------------------|:-------------|---------------------:|-------:|
+|:-------------------|------------------|-------------------|-------------|---------------------|-------|
 | severe weather     |              3060 | East North Central | normal             |                70000 |   2011 |
 | intentional attack |                 1 | East North Central | normal             |                  nan |   2014 |
 | severe weather     |              3000 | East North Central | cold               |                70000 |   2010 |
