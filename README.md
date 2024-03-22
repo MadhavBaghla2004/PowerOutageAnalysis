@@ -42,11 +42,11 @@ For Data Cleaning,
 
 |CAUSE.CATEGORY   |OUTAGE.DURATION |CLIMATE.REGION      |CLIMATE.CATEGORY |CUSTOMERS.AFFECTED |YEAR |
 |:------------|-------------|-------------|-------------|-------------|-----|
-| severe weather   |            3060 | East North Central  | normal           |              70000 | 2011 |
-| intentional attack |              1 | East North Central | normal           |                nan | 2014 |
-| severe weather   |            3000 | East North Central  | cold             |              70000 | 2010 |
-| severe weather   |            2550 | East North Central  | normal           |              68200 | 2012 |
-| severe weather   |            1740 | East North Central  | warm             |             250000 | 2015 |
+| severe weather   |            3060 | ENC | normal           |              70000 | 2011 |
+| intentional attack |              1 | ENC | normal           |                nan | 2014 |
+| severe weather   |            3000 | ENC | cold             |              70000 | 2010 |
+| severe weather   |            2550 | ENC  | normal           |              68200 | 2012 |
+| severe weather   |            1740 | ENC  | warm             |             250000 | 2015 |
 
 
 
