@@ -36,6 +36,7 @@ For Data Cleaning,
 ```outages_cleaned.groupby(['CLIMATE.REGION','CAUSE.CATEGORY','CLIMATE.CATEGORY'])``` <br>
 ```.agg('mean').dropna(how=all)```
 4. **Replacing invalid data**: We replaced negative or zero values in the `'OUTAGE.DURATION'` column to NaN (not a number) as they aren't valid durations for this dataset. For categorical columns, I replaced missing values or invalid values with 'NaN' so the data would be unbiased.
+   
 
 | CAUSE.CATEGORY     |   OUTAGE.DURATION | CLIMATE.REGION     | CLIMATE.CATEGORY   |   CUSTOMERS.AFFECTED |   YEAR |
 |:-------------------|------------------:|:-------------------|:-------------------|---------------------:|-------:|
@@ -44,6 +45,7 @@ For Data Cleaning,
 | severe weather     |              3000 | East North Central | cold               |                70000 |   2010 |
 | severe weather     |              2550 | East North Central | normal             |                68200 |   2012 |
 | severe weather     |              1740 | East North Central | warm               |               250000 |   2015 |
+
 ### Plots:
 #### Univariate
 <iframe
