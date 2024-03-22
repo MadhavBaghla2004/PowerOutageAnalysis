@@ -34,7 +34,7 @@ Number of Columns: 4
 For Data Cleaning, 
 1. **Column Selection**: We extracted the columns that pertained to our analysis: `'CAUSE.CATEGORY'`, `'OUTAGE.DURATION'`, `'CLIMATE.REGION'`, `'CLIMATE.CATEGORY'`, `'YEAR'`, and `'CUSTOMERS.AFFECTED'`
 2. **Cleaning Missing Values**: We dropped rows with all missing values so only meaningful data is used for our analysis and that there are no empty rows.
-   - For further cleaning, I organized the DataFrame so that they were grouped by each individual categorical variable and dropped rows without any data for those subcategories using <br>
+   - For further cleaning, we organized the DataFrame so that they were grouped by each individual categorical variable and dropped rows without any data for those subcategories using <br>
 ```outages_cleaned.groupby(['CLIMATE.REGION','CAUSE.CATEGORY','CLIMATE.CATEGORY'])``` <br>
 ```.agg('mean').dropna(how=all)```
 4. **Replacing invalid data**: We replaced negative or zero values in the `'OUTAGE.DURATION'` column to NaN (not a number) as they aren't valid durations for this dataset. For categorical columns, I replaced missing values or invalid values with 'NaN' so the data would be unbiased.
@@ -42,11 +42,11 @@ For Data Cleaning,
 
 | CAUSE.CATEGORY     |   OUTAGE.DURATION | CLIMATE.REGION  | CLIMATE.CATEGORY  |  CUSTOMERS.AFFECTED |  YEAR |
 |:--------------|--------------|--------------|-------------|----------|-------|
-| severe weather     |              3060 | East North Central | normal             |                70000 |   2011 |
-| intentional attack |                 1 | East North Central | normal             |                  nan |   2014 |
-| severe weather     |              3000 | East North Central | cold               |                70000 |   2010 |
-| severe weather     |              2550 | East North Central | normal             |                68200 |   2012 |
-| severe weather     |              1740 | East North Central | warm               |               250000 |   2015 |
+| severe weather     |              3060 | East North Central | normal             |    70000 |   2011 |
+| intentional attack |                 1 | East North Central | normal             |      nan |   2014 |
+| severe weather     |              3000 | East North Central | cold               |     70000 |   2010 |
+| severe weather     |              2550 | East North Central | normal             |     68200 |   2012 |
+| severe weather     |              1740 | East North Central | warm               |     250000 |   2015 |
 
 ### Plots:
 #### Univariate
@@ -58,7 +58,7 @@ For Data Cleaning,
 ></iframe>
 The graph shows the distribution of `'OUTAGE.DURATION'` in minutes, zoomed in to show the values before 10,000, as the larger values were dispersed and almost unvisible in the graph. The majority of outages were less than 2,000 minutes.
 
-It's hard to understand how this distribution is laid out, so I also created a log univariate graph to get a better understanding of how the data is distributed.
+It's hard to understand how this distribution is laid out, so we also created a log univariate graph to get a better understanding of how the data is distributed.
 
 ##### Log Univariate
 <iframe
