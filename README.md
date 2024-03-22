@@ -33,7 +33,8 @@ For Data Cleaning,
 1. **Column Selection**: We extracted the columns that pertained to our analysis: `'CAUSE.CATEGORY'`, `'OUTAGE.DURATION'`, `'CLIMATE.REGION'`, `'CLIMATE.CATEGORY'`, `'YEAR'`, and `'CUSTOMERS.AFFECTED'`
 2. **Cleaning Missing Values**: We dropped rows with all missing values so only meaningful data is used for our analysis and that there are no empty rows.
    - For further cleaning, I organized the DataFrame so that they were grouped by each individual categorical variable and dropped rows without any data for those subcategories using <br>
-```outages_cleaned.groupby(['CLIMATE.REGION','CAUSE.CATEGORY','CLIMATE.CATEGORY']).agg('mean').dropna(how=all)```
+```outages_cleaned.groupby(['CLIMATE.REGION','CAUSE.CATEGORY','CLIMATE.CATEGORY'])``` <br>
+```.agg('mean').dropna(how=all)```
 3. **Replacing invalid data**: We replaced negative or zero values in the `'OUTAGE.DURATION'` column to NaN (not a number) as they aren't valid durations for this dataset. 
 
 | CAUSE.CATEGORY     |   OUTAGE.DURATION | CLIMATE.REGION     | CLIMATE.CATEGORY   |   CUSTOMERS.AFFECTED |   YEAR |
