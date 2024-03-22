@@ -252,7 +252,7 @@ While the final model demonstrates an improvement over the baseline, its modest 
 
 ## Fairness Analysis:
 
-Group X: Different categories of causes (CAUSE.CATEGORY) <br>
+Group X: CAUSE.CATEGORY <br>
 Group Y: Prediction error (Absolute Error) <br>
 Evaluation Metric: Mean Absolute Error <br>
 Null Hypothesis : There is no significant difference in prediction error distributions between different cause categories. <br>
