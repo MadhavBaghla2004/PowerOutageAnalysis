@@ -40,7 +40,7 @@ For Data Cleaning,
 4. **Replacing invalid data**: We replaced negative or zero values in the `'OUTAGE.DURATION'` column to NaN (not a number) as they aren't valid durations for this dataset. For categorical columns, I replaced missing values or invalid values with 'NaN' so the data would be unbiased.
    
 
-|CAUSE.CATEGORY  |OUTAGE.DURATION |REGION    |CATEGORY |CUSTOMERS.AFFECTED |YEAR |
+|CAUSE.CATEGORY  |DURATION |REGION    |CATEGORY |CUSTOMERS.AFFECTED |YEAR |
 |:------------|-------------|-------------|-------------|-------------|-----|
 | severe weather   |            3060 | East North Central | normal           |          70000 | 2011 |
 | intentional attack |              1 | East North Central | normal           |            nan | 2014 |
