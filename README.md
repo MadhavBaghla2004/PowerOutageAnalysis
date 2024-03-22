@@ -95,25 +95,6 @@ For Data Cleaning,
   </tbody>
 </table>
 
-<style>
-    table {
-        width: 40%;
-    }
-
-    th, td {
-        padding: 4px;
-        text-align: left;
-    }
-
-    .narrow {
-        width: 5%;
-    }
-
-    .wide {
-        width: 15%;
-    }
-</style>
-
 
 
 
