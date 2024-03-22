@@ -258,7 +258,7 @@ Evaluation Metric: Mean Absolute Error <br>
 Null Hypothesis : There is no significant difference in prediction error distributions between different cause categories. <br>
 Alternative Hypothesis : There is a significant difference in prediction error distributions between at least one pair of cause categories. <br>
 Test Statistic: F-statistic from the ANOVA test <br>
-Significance Level: α = 0.05 (chosen significance level) <br>
+Significance Level: α = 0.05 <br>
 Resulting p-value: 7.928293976019978e-14 <br>
 
 <iframe
