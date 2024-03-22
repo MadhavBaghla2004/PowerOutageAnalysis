@@ -223,12 +223,14 @@ To fine-tune the model, we utilized GridSearchCV to explore a range of values fo
 *max_depth* controlled the complexity of the trees, ensuring they are sufficiently detailed to capture underlying patterns without becoming overly complex.
 *learning_rate* adjusted the contribution of each tree, fine-tuning the balance between learning speed and the risk of overfitting.
 
-#### Performance and Improvements:
+### Performance and Improvements:
 
 The hyperparameters that performed best were identified through a comprehensive GridSearchCV process:
 
 `regressor__learning_rate`: 0.01 - This learning rate was found to be optimal as it ensures gradual learning. A slower learning rate can lead to better generalization and prevents the model from overfitting on the training data.
+
 `regressor__max_depth`: 3 - A depth of 3 strikes a good balance between model complexity and generalization. Deeper trees could capture more intricate patterns but risk overfitting, while shallower trees might underfit.
+
 `regressor__n_estimators`: 100 - The choice of 100 trees was deemed sufficient for this model to achieve a balance between prediction accuracy and computational efficiency. Adding more trees beyond this point yielded diminishing returns on performance improvement.
 
 The GradientBoostingRegressor's ability to iteratively correct errors from previous trees played a pivotal role in enhancing prediction accuracy.
@@ -245,6 +247,7 @@ The limited improvement in the model's performance despite feature engineering a
 
 **Inherent Predictive Limitations**: Some aspects of power outage durations may simply be too random or influenced by unforeseeable events, making them inherently difficult to predict accurately with the data at hand.
 
+**Conclusion**:
 While the final model demonstrates an improvement over the baseline, its modest performance gain highlights the challenges in predicting power outage durations. The selected hyperparameters and feature engineering efforts provided some benefits, but the complexity of the underlying problem and potential data limitations suggest that further improvements may require additional data sources, more sophisticated models, or a reevaluation of the prediction task itself.
 
 ## Fairness Analysis:
