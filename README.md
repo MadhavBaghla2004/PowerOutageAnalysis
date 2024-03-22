@@ -114,7 +114,7 @@ This p-value indicates the probability of observing a test statistic as extreme 
 This indicates that the `'OUTAGES.DURATION'` column could likely be **MAR** with the `'CUSTOMERS.AFFECTED'` column.
 
 <iframe
-  src="assets/fig_cust_vs_duration_missing.html"
+  src="assets/fig_cust_vs_duration_missing_zoom.html"
   width="600"
   height="500"
   frameborder="0"
@@ -195,15 +195,57 @@ These features are chosen based on the assumption that the cause of the outage a
 
 ## Baseline Model:
 
-#### Results:
-After training the baseline model and evaluating it on the test set, we obtained an RMSE value that quantifies the average error in the same units as the target variable, providing a clear measure of prediction accuracy. The lower the RMSE, the more accurate the model is in predicting outage durations.
+For the baseline model of our prediction task on power outage durations, we've chosen to use a combination of quantitative and nominal features based on the data analyzed above. The quantitative feature in our model is `'CUSTOMERS.AFFECTED'`, which represents the number of customers impacted by a power outage. The nominal features are `'CAUSE.CATEGORY'` and `'CLIMATE.REGION'`, which detail the cause of the outage and the climate region where it occurred, respectively.
 
-#### Interpretation and Next Steps:
-A high RMSE value suggests that the model's predictions are significantly off from the actual durations, indicating a need for model improvement or consideration of additional features that might better capture the variance in outage durations.
-To enhance prediction accuracy, we could explore more complex models such as random forests or gradient boosting, which might capture non-linear relationships and interactions between features better than linear regression.
-Further feature engineering, such as creating interaction terms or incorporating additional relevant data like weather conditions or infrastructure age, could also improve model performance.
-This baseline model serves as a starting point for developing more sophisticated predictive models, with the ultimate goal of aiding utility companies in outage management and improving customer communication during outages.
+To handle the preprocessing of these features, we've implemented a sklearn pipeline that takes care of both numerical and categorical data. For the numerical feature `'CUSTOMERS.AFFECTED'`, we've used a SimpleImputer with a median strategy to fill in any missing values, ensuring that our model has complete data to learn from. For the categorical features `'CAUSE.CATEGORY'` and `'CLIMATE.REGION'`, we've applied a two-step process with a SimpleImputer set to the most frequent strategy to fill missing values, followed by OneHotEncoder to transform these nominal features into a format suitable for modeling.
+
+The RandomForestRegressor from sklearn serves as our model choice for this baseline setup, renowned for its robustness and capability to handle complex, non-linear relationships without extensive hyperparameter tuning. We've trained this model using a random state of 42 for reproducibility.
+
+Upon evaluating our baseline model on the test set, we achieved a Baseline Root Mean Squared Error (RMSE) of *6904.40021995283*. This metric quantifies the average magnitude of the errors between the predicted and actual outage durations, giving us a sense of how well our model is performing.
+
+#### Assessment of Model Performance:
+Given the RMSE value, the performance of our baseline model can be considered as an initial benchmark. While the RandomForestRegressor is a powerful algorithm capable of capturing complex patterns in the data, the choice of features and their preprocessing could be further optimized for better performance. The current RMSE indicates the average error in the predictions, which, depending on the context of the application, can be evaluated for its adequacy. The model will require more feature engineering since the graphs and data throughout this project haven't concluded anything concrete for us to implement.
+
 ## Final Model:
+For the final model in our power outage duration prediction task, we aimed to improve upon the baseline model by introducing a refined feature set and optimizing our model's hyperparameters. The model employs the GradientBoostingRegressor, a powerful ensemble method that builds sequential trees to minimize errors. The features utilized include 'CAUSE.CATEGORY', 'CLIMATE.REGION', and 'CUSTOMERS.AFFECTED', reflecting the cause of outage, the geographical climate, and the scale of customer impact respectively.
+
+#### Feature Engineering and Selection:
+
+**Quantile Transformation on `'CUSTOMERS.AFFECTED'`**: To address potential skewness and scale the numerical data more uniformly, we applied a QuantileTransformer. This transformation makes our model less sensitive to outliers in the number of customers affected by outages, ensuring that extreme values do not disproportionately influence the model's learning.
+
+**OneHot Encoding for Categorical Features**: The `'CAUSE.CATEGORY'` and `'CLIMATE.REGION'` features were one-hot encoded to convert categorical information into a machine-readable format. This encoding expands our model's capability to recognize patterns associated with specific outage causes and climate regions.
+
+#### Hyperparameter Tuning:
+
+To fine-tune the model, we utilized GridSearchCV to explore a range of values for the GradientBoostingRegressor's hyperparameters, including `n_estimators`, `max_depth`, and `learning_rate`. This systematic approach allowed us to identify the optimal settings that enhance the model's performance by balancing bias and variance, preventing overfitting while ensuring robust predictive capability.
+
+*n_estimators* was varied to determine the ideal number of sequential trees that contribute to reducing the model's error.
+*max_depth* controlled the complexity of the trees, ensuring they are sufficiently detailed to capture underlying patterns without becoming overly complex.
+*learning_rate* adjusted the contribution of each tree, fine-tuning the balance between learning speed and the risk of overfitting.
+
+#### Performance and Improvements:
+
+The hyperparameters that performed best were identified through a comprehensive GridSearchCV process:
+
+`regressor__learning_rate`: 0.01 - This learning rate was found to be optimal as it ensures gradual learning. A slower learning rate can lead to better generalization and prevents the model from overfitting on the training data.
+`regressor__max_depth`: 3 - A depth of 3 strikes a good balance between model complexity and generalization. Deeper trees could capture more intricate patterns but risk overfitting, while shallower trees might underfit.
+`regressor__n_estimators`: 100 - The choice of 100 trees was deemed sufficient for this model to achieve a balance between prediction accuracy and computational efficiency. Adding more trees beyond this point yielded diminishing returns on performance improvement.
+
+The GradientBoostingRegressor's ability to iteratively correct errors from previous trees played a pivotal role in enhancing prediction accuracy.
+
+The final model achieved an RMSE of 6503.701, which represents the average deviation between the predicted and actual outage durations. While this is an improvement from the baseline model's RMSE of 6904.400, the enhancement is relatively modest.
+
+#### Reflection on Limited Improvement:
+
+The limited improvement in the model's performance despite feature engineering and hyperparameter optimization suggests a few potential reasons:
+
+**Complex Nature of Outage Durations**: The duration of power outages can be influenced by a multitude of factors, many of which may not be captured fully by the available features. External variables such as emergency response efficiency, infrastructure age, and specific damage details play a critical role in outage resolution but were not included in the model.
+
+**Data Quality and Availability**: The model's ability to predict outage durations could be hindered by the quality of the available data. Missing values, inaccuracies, or the lack of granularity in the cause categorization and climate region information could limit the model's learning capability.
+
+**Inherent Predictive Limitations**: Some aspects of power outage durations may simply be too random or influenced by unforeseeable events, making them inherently difficult to predict accurately with the data at hand.
+
+While the final model demonstrates an improvement over the baseline, its modest performance gain highlights the challenges in predicting power outage durations. The selected hyperparameters and feature engineering efforts provided some benefits, but the complexity of the underlying problem and potential data limitations suggest that further improvements may require additional data sources, more sophisticated models, or a reevaluation of the prediction task itself.
 
 ## Fairness Analysis:
 
