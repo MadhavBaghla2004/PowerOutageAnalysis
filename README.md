@@ -270,6 +270,10 @@ Resulting p-value: 7.928293976019978e-14 <br>
 
 **Conclusion: With a p-value significantly less than the chosen significance level (p < 0.05), we reject the null hypothesis. Therefore, we conclude that there are significant differences in prediction error distributions between at least one pair of cause categories.**
 
+## Citations:
+We chose to do the fairness analysis using [Anova Test](https://www.geeksforgeeks.org/how-to-perform-a-one-way-anova-in-python/) which was not taught in class, but we found it interesting and helpful.
+
+
 
 
 
