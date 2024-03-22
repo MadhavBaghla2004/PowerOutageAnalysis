@@ -54,7 +54,7 @@ For Data Cleaning,
 ### Plots:
 #### Univariate
 <iframe
-  src="assets/fig_univariate.html"
+  src="fig_univariate.html"
   width="600"
   height="500"
   frameborder="0"
@@ -65,7 +65,7 @@ It's hard to understand how this distribution is laid out, so we also created a 
 
 ##### Log Univariate
 <iframe
-  src="assets/fig_log_univariate.html"
+  src="fig_log_univariate.html"
   width="600"
   height="500"
   frameborder="0"
@@ -75,7 +75,7 @@ This histogram presents the log-transformed distribution of power outage duratio
 
 ##### Bivariate
 <iframe
-  src="assets/fig_bivariate.html"
+  src="fig_bivariate.html"
   width="600"
   height="500"
   frameborder="0"
@@ -114,14 +114,14 @@ This p-value indicates the probability of observing a test statistic as extreme 
 This indicates that the `'OUTAGES.DURATION'` column could likely be **MAR** with the `'CUSTOMERS.AFFECTED'` column.
 
 <iframe
-  src="assets/fig_cust_vs_duration_zoom.html"
+  src="fig_cust_vs_duration_zoom.html"
   width="600"
   height="500"
   frameborder="0"
 ></iframe>
 
 <iframe
-  src="assets/fig_empirical_dist_missingness.html"
+  src="fig_empirical_dist_missingness.html"
   width="600"
   height="500"
   frameborder="0"
@@ -137,21 +137,21 @@ This indicates that the `'OUTAGES.DURATION'` column could likely be **MAR** with
 **Test Statistic**: Median outage duration
 
 <iframe
-  src="assets/fig_duration_over_time.html"
+  src="fig_duration_over_time.html"
   width="600"
   height="500"
   frameborder="0"
 ></iframe>
 
 <iframe
-  src="assets/fig_cause_vs_duration.html"
+  src="fig_cause_vs_duration.html"
   width="600"
   height="500"
   frameborder="0"
 ></iframe>
 
 <iframe
-  src="assets/fig_climate_region_vs_duration.html"
+  src="fig_climate_region_vs_duration.html"
   width="600"
   height="500"
   frameborder="0"
@@ -262,7 +262,7 @@ Significance Level: α = 0.05 <br>
 Resulting p-value: 7.928293976019978e-14 <br>
 
 <iframe
-  src="assets/fig_absolute_error_by_cause.html"
+  src="fig_absolute_error_by_cause.html"
   width="600"
   height="500"
   frameborder="0"
