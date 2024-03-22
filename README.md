@@ -39,6 +39,24 @@ For Data Cleaning,
 ```.agg('mean').dropna(how=all)```
 4. **Replacing invalid data**: We replaced negative or zero values in the `'OUTAGE.DURATION'` column to NaN (not a number) as they aren't valid durations for this dataset. For categorical columns, I replaced missing values or invalid values with 'NaN' so the data would be unbiased.
    
+<style>
+    table {
+        width: 70%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+
+    .narrow {
+        width: 10%;
+    }
+
+    .wide {
+        width: 20%;
+    }
+</style>
 
 <table>
   <thead>
