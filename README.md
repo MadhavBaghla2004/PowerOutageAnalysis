@@ -35,7 +35,7 @@ For Data Cleaning,
    - For further cleaning, I organized the DataFrame so that they were grouped by each individual categorical variable and dropped rows without any data for those subcategories using <br>
 ```outages_cleaned.groupby(['CLIMATE.REGION','CAUSE.CATEGORY','CLIMATE.CATEGORY'])``` <br>
 ```.agg('mean').dropna(how=all)```
-3. **Replacing invalid data**: We replaced negative or zero values in the `'OUTAGE.DURATION'` column to NaN (not a number) as they aren't valid durations for this dataset. 
+4. **Replacing invalid data**: We replaced negative or zero values in the `'OUTAGE.DURATION'` column to NaN (not a number) as they aren't valid durations for this dataset. For categorical columns, I replaced missing values or invalid values with 'NaN' so the data would be unbiased.
 
 | CAUSE.CATEGORY     |   OUTAGE.DURATION | CLIMATE.REGION     | CLIMATE.CATEGORY   |   CUSTOMERS.AFFECTED |   YEAR |
 |:-------------------|------------------:|:-------------------|:-------------------|---------------------:|-------:|
@@ -52,8 +52,9 @@ For Data Cleaning,
   height="500"
   frameborder="0"
 ></iframe>
+The graph shows the distribution of `'OUTAGE.DURATION'` in minutes, zoomed in to show the values before 10,000, as the larger values were dispersed and almost unvisible in the graph. The majority of outages were less than 2,000 minutes.
 
-It's hard to understand how this distribution is laid out, so let's also create a log univariate graph to get a better understanding of how the data is distributed.
+It's hard to understand how this distribution is laid out, so I also created a log univariate graph to get a better understanding of how the data is distributed.
 
 ##### Log Univariate
 <iframe
@@ -63,6 +64,8 @@ It's hard to understand how this distribution is laid out, so let's also create 
   frameborder="0"
 ></iframe>
 
+This histogram presents the log-transformed distribution of power outage durations, with a dashed green line indicating the average, and a hover feature that reveals the count of outages for each bin. The visualization employs a logarithmic scale to more clearly show the spread and central tendency of the data.
+
 ##### Bivariate
 <iframe
   src="assets/fig_bivariate.html"
@@ -70,6 +73,11 @@ It's hard to understand how this distribution is laid out, so let's also create 
   height="500"
   frameborder="0"
 ></iframe>
+This graph demonstrates the relationship between the `'CUSTOMERS.AFFECTED'` and `'OUTAGE.DURATION'` values. The graph is zoomed in to a limited axis of a duration up to 10,000 minutes and 750,000 customers affected to exclude extreme outliers and get a clearer vision of the distribution of the data.
+
+The graph also includes information from the `'CAUSE.CATEGORY'` through the scatter plot's colors and the `'CLIMATE.CATEGORY'` when you hover over a data point.
+
+This graph shows that there is no upfront correlation between the two columns, but the majority of the larger power outage durations were caused by severe weather.
 
 #### Interesting Aggregates Pivot Table
 The pivot table offers a clearer perspective on the median outage duration by examining the interplay between the cause of the outage, `'CAUSE.CATEGORY'`, the climate conditions, `'CLIMATE.CATEGORY'`, and the scale of customers affected, `'CUSTOMERS.AFFECTED'`. 
@@ -88,13 +96,13 @@ The multivariate analysis underscores the variability in outage durations depend
 
 The `'OUTAGES.DURATION'` column could likely be **NMAR** given that missingness could be due to 'invalid' or negligently brief outage duration times. We can contrast this missingness with the values of the `'CUSTOMERS.AFFECTED'` column to see if there are any consistencies or trends that can determine how big these outages are or if they could be described as negligent or not enough data.
 
-When conducting a permutation test to assess the missingness association between the `'OUTAGE.DURATION'` and the `'CUSTOMERS.AFFECTED'` in the form of shuffled a new column: `'CUSTOMER.BINS'`, a column created to organize it into different `bins` of `[0, 1000, 10000, 100000, 1000000, np.inf]`. 
+We conducted a permutation test to assess the missingness association between the `'OUTAGE.DURATION'` and the `'CUSTOMERS.AFFECTED'` in the form of shuffled a new column: `'CUSTOMER.BINS'`, a column created to organize it into different `bins` of `[0, 1000, 10000, 100000, 1000000, np.inf]`:
 
-**Observed Statistic**: 32044.474390936633
+**Observed Statistic**: 90223.66605616607
 
-**P-value**: 0.01
+**P-value**: 0.006
 
-Based off of the code, the observed statistic indicates that the standard deviation between the missing outage durations and the number of customers affected is approximately 32,044, and the p-value is 0.01, indicating that there is a 1% chance of observing a standard deviation as extreme as this by chance if the null hypothesis were true.
+This p-value indicates the probability of observing a test statistic as extreme as, or more extreme than, the observed statistic under the null hypothesis, which in this case assumes no association between the missingness of outage duration and the number of customers affected. A P-value of 0.006 suggests that there is a statistically significant association between the two variables, as it's below the significance level of 0.05.
 
 This indicates that the `'OUTAGES.DURATION'` column could likely be **MAR** with the `'CUSTOMERS.AFFECTED'` column.
 
@@ -144,9 +152,9 @@ This indicates that the `'OUTAGES.DURATION'` column could likely be **MAR** with
 
 The computed permutation test to test these hypothesis arrived at these results:
 
-**Observed Statistic**: 85.42412896956769
+**Observed Statistic**: 198131.0
 
-**P-value**: 0.085
+**P-value**: 0.0201
 
 The observed statistic represents the aggregate deviation of median outage durations within each category combination from `'CAUSE.CATEGORY'`, `'CLIMATE.CATEGORY'`, and `'CUSTOMER.BIN'`, from the overall median outage duration across the entire dataset.
 
@@ -157,16 +165,19 @@ The model is to predict the duration of major power outages based on the cause o
 
 #### Response Variable
 **Response Variable**: `'OUTAGE.DURATION'`
+
 Understanding the duration of power outages can help utility companies in planning and resource allocation to mitigate the effects of outages. Predicting outage duration can also aid in effectively communicating with customers regarding outage resolutions.
 
 #### Evaluation Metric
 **Chosen Metric**: Root Mean Squared Error (RMSE)
+
 RMSE is a suitable metric for regression problems as it measures the average magnitude of the error between predicted and actual values, providing an estimate of how far predictions are from the actual outage durations. It penalizes larger errors more than Mean Absolute Error (MAE), making it more sensitive to outliers, which is valuable in a context where large deviations from actual durations are more impactful. Additionally, RMSE is in the same unit as the target variable, making it intuitively easier to interpret.
 
 #### Model and Features
 **Model**: Linear Regression
 
 **Features**: `'CAUSE.CATEGORY'`, `'CLIMATE.REGION'`, `'CUSTOMERS.AFFECTED'`
+
 These features are chosen based on the assumption that the cause of the outage and the climate region could influence the duration due to varying severity and response strategies. The number of customers affected is also a proxy for the outage's scale, which could impact duration.
 
 #### Data Preprocessing
