@@ -41,7 +41,7 @@ For Data Cleaning,
    
 <style>
     table {
-        width: 70%;
+        width: 50%;
     }
 
     th, td {
