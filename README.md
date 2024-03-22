@@ -114,7 +114,7 @@ This p-value indicates the probability of observing a test statistic as extreme 
 This indicates that the `'OUTAGES.DURATION'` column could likely be **MAR** with the `'CUSTOMERS.AFFECTED'` column.
 
 <iframe
-  src="assets/fig_cust_vs_duration_missing_zoom.html"
+  src="assets/fig_cust_vs_duration_zoom.html"
   width="600"
   height="500"
   frameborder="0"
@@ -260,6 +260,13 @@ Alternative Hypothesis : There is a significant difference in prediction error d
 Test Statistic: F-statistic from the ANOVA test <br>
 Significance Level: α = 0.05 (chosen significance level) <br>
 Resulting p-value: 7.928293976019978e-14 <br>
+
+<iframe
+  src="assets/fig_absolute_error_by_cause.html"
+  width="600"
+  height="500"
+  frameborder="0"
+></iframe>
 
 **Conclusion: With a p-value significantly less than the chosen significance level (p < 0.05), we reject the null hypothesis. Therefore, we conclude that there are significant differences in prediction error distributions between at least one pair of cause categories.**
 
